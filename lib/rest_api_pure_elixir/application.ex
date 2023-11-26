@@ -8,8 +8,7 @@ defmodule RestApiPureElixir.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: RestApiPureElixir.Worker.start_link(arg)
-      # {RestApiPureElixir.Worker, arg}
+      {Plug.Cowboy, scheme: :http, plug: RestApiPureElixir.Router, options: [port: 8080]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
